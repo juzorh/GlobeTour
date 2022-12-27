@@ -8,7 +8,9 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_favorite">Favorite</string>
-    <string name="menu_city_list">City List</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_favorites">Favorites</string>
+    <string name="menu_city_list">Top Cities</string>
+    <string name="favorite_icon">add to favourite</string>
+    <string name="delete_icon">delete destination</string>
+    <string name="placeholder_image">destination image</string>
 </resources>
