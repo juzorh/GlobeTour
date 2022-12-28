@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.juzor.globetour.adapter.CityAdapter
 import com.juzor.globetour.databinding.FragmentCityListBinding
+import com.juzor.globetour.model.VacationSpots
 
 class CityList : Fragment() {
 
@@ -22,17 +23,26 @@ class CityList : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(CityListViewModel::class.java)
-
         _binding = FragmentCityListBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        setupRecyclerView(view)
+
+        return binding.root
+    }
+
+    private fun setupRecyclerView(view: View?) {
+        val context = requireContext()
+
+        val cityAdapter = VacationSpots.cityList?.let {
+            CityAdapter(context, it)
         }
-        return root
+
+        binding.cityRecyclerView.apply {
+            adapter = cityAdapter
+            setHasFixedSize(true) //if the data size doesn't change at runtime
+            layoutManager = LinearLayoutManager(context)
+        }
+
     }
 
     override fun onDestroyView() {
