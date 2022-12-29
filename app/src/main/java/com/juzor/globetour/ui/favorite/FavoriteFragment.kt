@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.juzor.globetour.adapter.FavoriteListAdapter
 import com.juzor.globetour.databinding.FragmentFavoriteBinding
+import com.juzor.globetour.model.VacationSpots
 
 class FavoriteFragment : Fragment() {
 
@@ -22,17 +23,23 @@ class FavoriteFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val galleryViewModel =
-            ViewModelProvider(this).get(FavoriteViewModel::class.java)
 
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        val textView: TextView = binding.textGallery
-        galleryViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        setupRecyclerView()
+
+        return binding.root
+    }
+
+    private fun setupRecyclerView() {
+        val context = requireContext()
+        val favoriteCityAdapter = FavoriteListAdapter(context, VacationSpots.favoriteCityList)
+
+        binding.favouriteListRecyclerview.apply {
+            adapter = favoriteCityAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+            setHasFixedSize(true)
         }
-        return root
     }
 
     override fun onDestroyView() {

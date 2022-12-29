@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.juzor.globetour.adapter.CityAdapter
 import com.juzor.globetour.databinding.FragmentCityListBinding
@@ -40,7 +41,7 @@ class CityList : Fragment() {
         binding.cityRecyclerView.apply {
             adapter = cityAdapter
             setHasFixedSize(true) //if the data size doesn't change at runtime
-            layoutManager = LinearLayoutManager(context)
+            //layoutManager = GridLayoutManager(context, 2)
         }
 
     }
