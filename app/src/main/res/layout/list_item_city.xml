@@ -62,8 +62,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imv_delete"
             app:layout_constraintTop_toBottomOf="@+id/imv_city"
-            app:srcCompat="@drawable/ic_favorite_bordered"
-            app:tint="#9e9e9e" />
+            app:srcCompat="@drawable/ic_favorite_bordered"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

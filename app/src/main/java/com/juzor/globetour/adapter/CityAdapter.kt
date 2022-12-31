@@ -1,6 +1,7 @@
 package com.juzor.globetour.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.juzor.globetour.FullPicture
 import com.juzor.globetour.R
 import com.juzor.globetour.model.City
 import com.juzor.globetour.model.VacationSpots
@@ -88,6 +90,20 @@ class CityAdapter(
 
         private fun fullScreenDisplay() {
             Toast.makeText(context, "See full picture", Toast.LENGTH_LONG).show()
+
+            val id = currentPosition
+
+            currentCity?.let {
+                val cityImage = it.imageId
+                val isFavorite = it.isFavorite
+
+                val intent = Intent(context, FullPicture::class.java)
+                intent.putExtra("CITY_ID", id)
+                intent.putExtra("CITY_IMAGE", cityImage)
+                intent.putExtra("isFavorite", isFavorite)
+
+                context.startActivity(intent)
+            }
         }
 
         private fun deleteItem() {

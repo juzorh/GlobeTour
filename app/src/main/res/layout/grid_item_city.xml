@@ -58,8 +58,7 @@
             android:contentDescription="@string/favorite_icon"
             app:layout_constraintEnd_toStartOf="@+id/imv_delete"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_favorite_bordered"
-            app:tint="#9e9e9e" />
+            app:srcCompat="@drawable/ic_favorite_bordered"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
